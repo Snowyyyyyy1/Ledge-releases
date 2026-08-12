@@ -3,6 +3,59 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.3</title>
+            <pubDate>Wed, 12 Aug 2026 12:07:30 +0000</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">## 自 v0.1.2 以来
+
+- fix(release): drop the lower build when a version appears twice in the appcast
+- chore(release): bump to 0.1.3
+- fix(release): appcast.py must accept legacy .zip entries or the first DMG release dies
+- docs(plan): the shape-shifting ledger — 39 relaxations this series, 62 repo-wide
+- refactor(coordinator): lifecycle handlers, audit beat, rescue wiring move to +Lifecycle
+- chore(coordinator): complete the relaxation markers — 4 missed in batch 1, 2 in +Reveal
+- refactor(coordinator): reveal intent and focus ownership move to +Reveal
+- fix(audit): systemSettled loses its default — the settling wire must not degrade silently
+- refactor(coordinator): hotkey stow/reveal move to +Hotkeys
+- refactor(coordinator): edge-group derivation stands alone in +EdgeGroups
+- refactor(coordinator): move drop-semantics into +Drag
+- docs: SessionCoordinator split design — extension split now, real split with §5
+- docs(ci): pin runs-on rationale and itemize what the SDK-parity retirement cost
+- fix(ci): pin Xcode 26.3 — default 16.4 cannot parse swift-tools 6.2 manifests
+- docs(spec): record the guided-grant flow and its no-reprompt discipline
+- feat(permissions): guided screen-recording grant from hover-preview settings
+- feat(permissions): guided accessibility grant from settings
+- feat(permissions): PermissionGuide, the single entry for the Codex-style overlay
+- deps: add PermissionFlow 2.9.0 for the Codex-style permission overlay
+- feat(release): ship a DMG with drag-to-Applications instead of a bare zip
+- docs: add PermissionFlow integration design spec (Codex-style permission overlay)
+
+## 安装
+
+下载 `Ledge-0.1.3.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
+Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.3.dmg.sha256
+```
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.3/Ledge-0.1.3.dmg" length="2345215" type="application/octet-stream" sparkle:edSignature="VhyY+MZ1pH+RXZNJc2OmyX4WfwNREYfzFWqSYuMU/QspywDLHlaKJWcdV1L93zJtRyc4PLPHxnnkWUEPSftbBw==" />
+        </item>
+        <item>
             <title>0.1.2</title>
             <pubDate>Tue, 11 Aug 2026 17:17:09 +0000</pubDate>
             <sparkle:version>8</sparkle:version>
@@ -42,45 +95,5 @@ shasum -a 256 -c Ledge-0.1.2.zip.sha256
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.2/Ledge-0.1.2.zip" length="2026402" type="application/octet-stream" sparkle:edSignature="PoJERs63D25Mk5oOgdrNTYqoTQ7td6ENdmcADAj80zV9DUZiNu8X6d4J/PkCTvgerPa1e6pkiAemZXUq3mLbBQ==" />
         </item>
-        <item>
-            <title>0.1.2</title>
-            <pubDate>Tue, 11 Aug 2026 12:48:41 +0000</pubDate>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">## 自 v0.1.1 以来
-
-- SettingsView 涨到 620 行,按 §3 原设计真拆:一 tab 一文件
-- 更新查得到却装不上:换成 Sparkle,发布说明也终于是渲染过的
-- 挡住仓库内的嵌套 worktree:.claude/worktrees/ 进 .gitignore
-- 体检整改:mouseLocationAX 三份收敛为一;shutdown 观察者整体移除;master 补 push CI
-- PLAN 止损修订:标出已被推翻的架构条目,免得下次误导
-- Info.plist 是生成物,不该入库:仓库停在 0.1.0 而 project.yml 已是 0.1.1
-- 兑现 SPEC §12:日志按 session 归因,AX 调用有了分类计数与 p50/p95
-- release notes 生成了却没人用:release job 还在跑 --generate-notes
-
-## 安装
-
-下载 `Ledge-0.1.2.zip`,解压后拖进「应用程序」。
-
-**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
-Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.2.zip.sha256
-```
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.2/Ledge-0.1.2.zip" length="2026398" type="application/octet-stream" sparkle:edSignature="ytfczdYvU9++kDtm2ZarPqLfJB6LbMsJuHHON6i66uTW+CIAv9kJa7j55yv4sPX85R/6djCZ23+l9cGp6u+OCA==" />
-        </item>
-    </channel>
+        </channel>
 </rss>
