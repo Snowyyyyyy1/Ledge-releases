@@ -3,6 +3,42 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.5</title>
+            <pubDate>Sat, 15 Aug 2026 07:20:33 +0000</pubDate>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">## 自 v0.1.4 以来
+
+- chore(release): bump to 0.1.5
+- feat(update): tell the user as soon as an update is staged, not a week later
+- docs(update): pin down when immediateFocus is actually reachable
+- docs(update): correct the update path in SPEC; drop the premature dismissal hook
+
+## 安装
+
+下载 `Ledge-0.1.5.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
+Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.5.dmg.sha256
+```
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.5/Ledge-0.1.5.dmg" length="2377298" type="application/octet-stream" sparkle:edSignature="YwDGwBC4ZDvDNG0VjVlWQ7TG8dLZKsKucAV3sw6++zdvR8IN9q+Q4VjdEmq9OIPfFK8Ti8tartILaWgp2i1uCg==" />
+        </item>
+        <item>
             <title>0.1.4</title>
             <pubDate>Sat, 15 Aug 2026 03:13:42 +0000</pubDate>
             <sparkle:version>10</sparkle:version>
@@ -95,46 +131,6 @@ shasum -a 256 -c Ledge-0.1.3.dmg.sha256
 ```
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.3/Ledge-0.1.3.dmg" length="2345215" type="application/octet-stream" sparkle:edSignature="VhyY+MZ1pH+RXZNJc2OmyX4WfwNREYfzFWqSYuMU/QspywDLHlaKJWcdV1L93zJtRyc4PLPHxnnkWUEPSftbBw==" />
-        </item>
-        <item>
-            <title>0.1.2</title>
-            <pubDate>Tue, 11 Aug 2026 17:17:09 +0000</pubDate>
-            <sparkle:version>8</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">## 自 v0.1.1 以来
-
-- refactor: split SettingsView into one file per tab
-- feat(update): updates were found but could not install — switch to Sparkle, and release notes finally render
-- chore: gitignore .claude/worktrees/ to keep nested worktrees out of the index
-- fix: dedupe mouseLocationAX into ScreenGeometry, remove all observers on shutdown, add push CI
-- docs: mark the overturned architecture entries in PLAN to stop them misleading the next session
-- fix(build): Info.plist is a generated artefact and should not be tracked — the repo sat at 0.1.0 while project.yml was already 0.1.1
-- feat(log): deliver SPEC §12 — per-session log attribution and categorised AX call metrics with p50/p95
-- fix(release): release notes were generated and never used — the release job still ran --generate-notes
-
-## 安装
-
-下载 `Ledge-0.1.2.zip`,解压后拖进「应用程序」。
-
-**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
-Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.2.zip.sha256
-```
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.2/Ledge-0.1.2.zip" length="2026402" type="application/octet-stream" sparkle:edSignature="PoJERs63D25Mk5oOgdrNTYqoTQ7td6ENdmcADAj80zV9DUZiNu8X6d4J/PkCTvgerPa1e6pkiAemZXUq3mLbBQ==" />
         </item>
     </channel>
 </rss>
