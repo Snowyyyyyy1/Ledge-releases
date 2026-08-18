@@ -3,6 +3,68 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.8</title>
+            <pubDate>Tue, 18 Aug 2026 16:41:02 +0800</pubDate>
+            <sparkle:version>15</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版没有新功能,全部是**可靠性**:让"收起来的窗口找不回来"这类事不再发生,
+并且让它一旦发生,日志里说得出是哪一步没成。
+
+## 修好的
+
+- **窗口明明没动,状态却说已经收好/展开了。** 移动窗口的指令被系统接受,不等于窗口真的到了位置——
+  目标 App 卡住时前者照样成功。此前有六处把"指令被接受"当成"窗口到位",后果是状态、指示条、
+  真实位置三者不一致,而这种不一致连自动救援都不会触发。现在每一次定位都回读确认,没到就说没到。
+- **拖离边缘后立刻拖回,窗口会变成没人管。** 交还和重新吸附撞在一起时,先前那次交还会把
+  刚接管的记录抹掉,于是窗口收在边上,而 Ledge 已经不认识它了。
+- **拔掉显示器后窗口留在旧屏坐标。** 迁屏没成功时,Ledge 仍按新屏记录位置,窗口却在一块不存在的屏幕外面。
+- **不响应的 App 会被误判成"用户自己搬走了窗口"**,于是 Ledge 提前放手。现在分得清
+  "有人在跟我抢"和"我这条通道卡住了"——前者才是交还管理权的理由。
+- **换边重新吸附后可能立刻被放弃管理**:上一条边累积的对抗次数被带到了新位置。
+- **收纳的窗口可能露出一截**:App 拒绝首选宽度时,补正位没落地而没有任何提示。
+- **展开/收起偶尔卡顿**:定位确认最多会重试到 20 秒。现在超过 1.5 秒就交给后台巡检,不占用户的手。
+  后台救援路径不受这个限制——那里没人在等,重试到底更要紧。
+
+## 界面
+
+- **权限一览现在会标出"还缺哪项"。** 之前只有已授权的那项有绿色标记,没授权的只有一颗按钮,
+  两行长得一模一样——而这张表存在的意义就是让你想不起授过什么时来看一眼。
+- 「关于」页的诊断折叠块排版对齐了。
+
+## 底下的
+
+- 新增一道 CI 检查,专门拦上面那一整类缺陷(它们不报错、不崩溃,只是让窗口悄悄失联)。
+- 测试 247 项。
+
+## 安装
+
+下载 `Ledge-0.1.8.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.8.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.8/Ledge-0.1.8.dmg" length="2581956" type="application/octet-stream" sparkle:edSignature="z5SNjoJY8rI9C52EOOjLbU8Y6Sw9G5mY84x9Ap0yyf4BAF+sjjdc5YO+gNlUitN8ZSkA8Q6r79ecFRPZtnYvCg==" />
+        </item>
+        <item>
             <title>0.1.6</title>
             <pubDate>Sat, 15 Aug 2026 08:15:36 +0000</pubDate>
             <sparkle:version>12</sparkle:version>
@@ -72,47 +134,6 @@ shasum -a 256 -c Ledge-0.1.5.dmg.sha256
 ```
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.5/Ledge-0.1.5.dmg" length="2377298" type="application/octet-stream" sparkle:edSignature="YwDGwBC4ZDvDNG0VjVlWQ7TG8dLZKsKucAV3sw6++zdvR8IN9q+Q4VjdEmq9OIPfFK8Ti8tartILaWgp2i1uCg==" />
-        </item>
-        <item>
-            <title>0.1.4</title>
-            <pubDate>Sat, 15 Aug 2026 03:13:42 +0000</pubDate>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">## 自 v0.1.3 以来
-
-- fix(update): scheduled updates get a gentle status-bar reminder, not stolen focus
-- ci(release): re-sign with stable self-signed cert so TCC grants survive updates
-- chore(release): bump to 0.1.4; note why scanReportedFocus skips subrole
-- perf(probe): window enumeration moves off the AX lane to WindowServer reads
-- feat(probe): cross-validate AX window scan against CGWindowList (stage 1 of B)
-- fix(reveal): hand-off-induced activations skip the intent/scan chain
-- fix(app): install a main menu so Cmd+Q works in the settings window
-- fix(permissions): one grant button for screen recording, same shape as accessibility
-- fix(update): stop gating update checks behind accessibility permission
-
-## 安装
-
-下载 `Ledge-0.1.4.dmg`,双击打开,把 Ledge 拖到「应用程序」。
-
-**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
-Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.4.dmg.sha256
-```
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.4/Ledge-0.1.4.dmg" length="2374392" type="application/octet-stream" sparkle:edSignature="llnfrBFuC83y5Xw2dMxN4l+XGu7pqAzzaCe2VDxpAfP+t7I2FEEOx7v1Jt4OKrmetcsmT56IDVqasa8L5LrLAQ==" />
         </item>
     </channel>
 </rss>
