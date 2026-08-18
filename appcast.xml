@@ -3,6 +3,56 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.9</title>
+            <pubDate>Wed, 19 Aug 2026 01:17:08 +0800</pubDate>
+            <sparkle:version>16</sparkle:version>
+            <sparkle:shortVersionString>0.1.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版主要调整交互反馈、指示条外观和日志输出，让窗口收纳时更安静、更容易理解。
+
+## 界面与交互
+
+- **悬停只显示预览,不会自动弹出窗口。** 把鼠标放到边缘小图标上时可以查看窗口预览,点击后才会唤回窗口。
+- **吸附预览改成贴边窄轨。** 吸附过程中不再显示大块蓝色区域,视觉效果与 SideBar 的原版行为一致。
+- **可以关闭小图标。** 在设置的「指示条外观」中关闭「显示小图标」后,仍保留可点击的贴边区域。
+
+## 日志
+
+- **日志改为标准文本格式。** 使用时间、级别、组件和消息组成日志行,移除 emoji 装饰,多行消息也会逐行保持统一格式。
+- **发布版持续写入本地日志文件。** 日志位于 `~/Library/Logs/Ledge/ledge.log`,方便从设置中打开查看和反馈问题。
+
+## 验证
+
+- 测试 259 项。
+
+## 安装
+
+下载 `Ledge-0.1.9.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.9.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.9/Ledge-0.1.9.dmg" length="2633449" type="application/octet-stream" sparkle:edSignature="cjSM4PdmSutkC5X+NgwxdpDXR/z7SFLIujK1PrfKS3A2sZj1h9GsH1IoRea9CRg8bVYeufh9FbfNUcdmFJcoAg==" />
+        </item>
+        <item>
             <title>0.1.8</title>
             <pubDate>Tue, 18 Aug 2026 16:41:02 +0800</pubDate>
             <sparkle:version>15</sparkle:version>
@@ -98,42 +148,6 @@ shasum -a 256 -c Ledge-0.1.6.dmg.sha256
 ```
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.6/Ledge-0.1.6.dmg" length="2373585" type="application/octet-stream" sparkle:edSignature="nD468xuLUukc+Xa1aE0lQpFw1T159G8zQhwamo4jw4omAbdXG+N/mS2hdwj1YlgB28xTHhNfqps/7rOSI3MKCg==" />
-        </item>
-        <item>
-            <title>0.1.5</title>
-            <pubDate>Sat, 15 Aug 2026 07:20:33 +0000</pubDate>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">## 自 v0.1.4 以来
-
-- chore(release): bump to 0.1.5
-- feat(update): tell the user as soon as an update is staged, not a week later
-- docs(update): pin down when immediateFocus is actually reachable
-- docs(update): correct the update path in SPEC; drop the premature dismissal hook
-
-## 安装
-
-下载 `Ledge-0.1.5.dmg`,双击打开,把 Ledge 拖到「应用程序」。
-
-**首次打开请右键点图标 →「打开」**,不要双击。这个包是 ad-hoc 签名的,没有 Apple
-Developer ID 证书(需付费会员),Gatekeeper 会拦一次;选「打开」之后就能正常双击了。
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.5.dmg.sha256
-```
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.5/Ledge-0.1.5.dmg" length="2377298" type="application/octet-stream" sparkle:edSignature="YwDGwBC4ZDvDNG0VjVlWQ7TG8dLZKsKucAV3sw6++zdvR8IN9q+Q4VjdEmq9OIPfFK8Ti8tartILaWgp2i1uCg==" />
         </item>
     </channel>
 </rss>
