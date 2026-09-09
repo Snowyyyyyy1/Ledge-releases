@@ -3,6 +3,58 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.15</title>
+            <pubDate>Wed, 09 Sep 2026 19:56:32 +0800</pubDate>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>0.1.15</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版专注于 macOS 窗口展开/收起的几何驱动时序加固。
+
+## 窗口动画与写入时序
+
+- 移除慢速辅助功能写入后延后动画起点的补偿逻辑，保持动画按真实时间推进。
+- 慢写入时合并过期的中间位置，避免继续补发已经失去时效的几何帧。
+- 保留硬超时、取消检查、单调进度和最终位置提交，减少慢速目标 App 对动画生命周期的影响。
+
+## 诊断与测试
+
+- 增加自适应帧写入策略及单元测试。
+- 增加慢写入诊断开关，便于区分 AX 往返、调度和几何提交问题。
+
+## 验证
+
+- Debug 构建通过。
+- Ledge 单元测试全部通过（332 项）。
+- 本版本不将几何日志等同于像素级流畅度验收；真实窗口的 60fps 视觉验证仍按需进行。
+
+## 安装
+
+下载 `Ledge-0.1.15.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.15.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.15/Ledge-0.1.15.dmg" length="3161064" type="application/octet-stream" sparkle:edSignature="IBzbpHQIbSLiIxqVZ8msJhFIyDCcyl0S1SolsM84l1vSgh7CZZFljDF9g+nkxF+buyzPWMc4NN/cGmKUb2EaCQ==" />
+        </item>
+        <item>
             <title>0.1.14</title>
             <pubDate>Tue, 08 Sep 2026 12:38:41 +0800</pubDate>
             <sparkle:version>22</sparkle:version>
@@ -110,58 +162,6 @@ shasum -a 256 -c Ledge-0.1.13.dmg.sha256
 更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.13/Ledge-0.1.13.dmg" length="2963153" type="application/octet-stream" sparkle:edSignature="26mi9YyQGw4BuWIxw4hxqagTXx1BbrQY4y9kJZpNczVDWS+rzH0gqbTKqKaaFIsGc5EKS/4LxNYpP0fYJjUrBw==" />
-        </item>
-        <item>
-            <title>0.1.12</title>
-            <pubDate>Sat, 22 Aug 2026 20:41:39 +0800</pubDate>
-            <sparkle:version>20</sparkle:version>
-            <sparkle:shortVersionString>0.1.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">这一版恢复并完善了 Sidebar 风格的边缘窗口交互。
-
-## 窗口交互
-
-- 靠近颜色指示条后延迟展开真实窗口，离开窗口安全范围后自动收起。
-- 点击指示条可以显式展开或收起；展开后的固定状态由独立图钉控制。
-- 修复固定窗口在展开、收起、迁屏、辅助功能权限恢复和窗口销毁交错发生时的状态竞态。
-- 修复指示条重定位后鼠标状态不同步导致的再次展开失效问题。
-
-## 动画与设置
-
-- 增加多种展开和收起曲线，并支持在设置中预览。
-- 增加指示条、悬停展开、快捷键和开机自启等开关的可视化预览。
-- 调整指示条颜色和图标呈现，减少灰色边缘并改善状态辨识度。
-
-## 验证
-
-- 生成工程后运行本地化、日志、生成门禁、构建和全量测试。
-
-## 安装
-
-下载 `Ledge-0.1.12.dmg`,双击打开,把 Ledge 拖到「应用程序」。
-
-首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
-到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
-「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
-(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.12.dmg.sha256
-```
-
-更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.12/Ledge-0.1.12.dmg" length="2850167" type="application/octet-stream" sparkle:edSignature="wo+clFeB5FQgpbXBHbA2/rkoNfXISrRmURCqsHocxXtfiKgFn/iLEf7z60R8UrtRH1Rein265bVTqnJwsVT5Bg==" />
         </item>
     </channel>
 </rss>
