@@ -3,6 +3,55 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.16</title>
+            <pubDate>Thu, 10 Sep 2026 12:41:44 +0800</pubDate>
+            <sparkle:version>24</sparkle:version>
+            <sparkle:shortVersionString>0.1.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版继续收紧 macOS 窗口展开/收起时的焦点交接，重点解决用户在动画稳定期间切换应用时出现的“卡住”或键盘落到错误窗口的问题。
+
+## 焦点交接
+
+- 展开时仅在用户意图仍指向目标 App 的情况下写入焦点，避免覆盖用户已经切换到的其他应用。
+- 收纳后的延迟焦点交还改为带快照和激活纪元的事务；用户在等待期间切换应用时，旧交接会自动失效。
+- 焦点写入后增加目标窗口语义回读，确认 App 实际获得的是预期窗口，而不是仅依赖写入调用返回成功。
+
+## 诊断与测试
+
+- 增加焦点意图、延迟交接失效和目标窗口验证的单元测试。
+- Debug 构建通过，Ledge 单元测试全部通过（340 项）。
+- 真实 macOS Debug GUI 回归已验证：外部切换会取消旧焦点交接，正常展开和收纳后的焦点交还仍然有效。
+
+本版本不把辅助功能日志或窗口几何数据等同于像素级流畅度验收；真实窗口的视觉帧率仍需按设备和目标 App 单独观察。
+
+## 安装
+
+下载 `Ledge-0.1.16.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.16.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.16/Ledge-0.1.16.dmg" length="3169875" type="application/octet-stream" sparkle:edSignature="p6ZvOn0CEfKKswFhHHfhsfliLSrbGmBT58M5lXjucWG19jktodlagjJ6/KezUeO1L0sq7GgS0pxOV9WkKTc6CA==" />
+        </item>
+        <item>
             <title>0.1.15</title>
             <pubDate>Wed, 09 Sep 2026 19:56:32 +0800</pubDate>
             <sparkle:version>23</sparkle:version>
@@ -107,61 +156,6 @@ shasum -a 256 -c Ledge-0.1.14.dmg.sha256
 更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.14/Ledge-0.1.14.dmg" length="3153818" type="application/octet-stream" sparkle:edSignature="W2x6c2FOpI60TDhHHyMhdKwWogO4OapPc6DlTWIhNf24drvD0sUSAcqu+IRvYzCLA/7f5njeg1BSRtZRRGZaBA==" />
-        </item>
-        <item>
-            <title>0.1.13</title>
-            <pubDate>Mon, 24 Aug 2026 21:12:44 +0800</pubDate>
-            <sparkle:version>21</sparkle:version>
-            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">这一版重点修复代理动画在真实窗口交接期间的卡顿、首帧丢失和流生命周期问题。
-
-## 动画与窗口交互
-
-- 保留经典 AX 动画作为默认实现，新增可选的实时代理窗口实现，方便在设置中切换对比。
-- 修复代理动画准备、取消、超时和新旧捕获流交叠时的清理问题。
-- 增加窗口身份与操作轮次校验，避免旧动画结束后误改当前窗口的透明度或几何位置。
-- 增加捕获帧停滞保护；代理帧异常中断时回退到真实窗口结果，不留下冻结的代理画面。
-
-## Screen Capture
-
-- 接受 ScreenCaptureKit 的首个可显示帧，并将 `SCFrameStatus.idle` 作为捕获存活信号，避免静态画面被误判为断流。
-- 使用最新帧合并投递，减少高频捕获回调在主线程上造成的排队和抖动。
-- 统一处理捕获流停止、被取消和被新一轮交接替代的生命周期。
-- 实时代理实现为可选功能，需要屏幕录制权限；未选择时不会启用捕获。
-
-## 设置与验证
-
-- 新增动画实现选择，并持久化用户选择；未知或损坏的配置会安全回退到经典 AX。
-- 新增代理帧健康检查、首帧策略和配置持久化测试。
-- 生成工程后运行本地化、日志、生成门禁、语法检查和全量测试。
-
-## 安装
-
-下载 `Ledge-0.1.13.dmg`,双击打开,把 Ledge 拖到「应用程序」。
-
-首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
-到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
-「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
-(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.13.dmg.sha256
-```
-
-更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.13/Ledge-0.1.13.dmg" length="2963153" type="application/octet-stream" sparkle:edSignature="26mi9YyQGw4BuWIxw4hxqagTXx1BbrQY4y9kJZpNczVDWS+rzH0gqbTKqKaaFIsGc5EKS/4LxNYpP0fYJjUrBw==" />
         </item>
     </channel>
 </rss>
