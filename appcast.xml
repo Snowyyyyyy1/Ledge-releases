@@ -4,8 +4,8 @@
         <title>Ledge</title>
         <item>
             <title>0.1.17</title>
-            <pubDate>Thu, 10 Sep 2026 14:16:23 +0800</pubDate>
-            <sparkle:version>26</sparkle:version>
+            <pubDate>Thu, 10 Sep 2026 14:52:34 +0800</pubDate>
+            <sparkle:version>27</sparkle:version>
             <sparkle:shortVersionString>0.1.17</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown">这一版发布 Windows 首个可用版本，并继续收紧 macOS 与 Windows 在窗口焦点交接上的行为。
@@ -54,7 +54,7 @@ shasum -a 256 -c Ledge-0.1.17.dmg.sha256
 
 更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
 </description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.17/Ledge-0.1.17.dmg" length="3169903" type="application/octet-stream" sparkle:edSignature="jOi0AnxH8E1MYB/IAuEFCLeDyB5GMo2wdZvt1QBmumyH0os1sXAOeGe/NUx88RJTwZTeg1ux6jFGaGHCHSi8AQ==" />
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.17/Ledge-0.1.17.dmg" length="3169852" type="application/octet-stream" sparkle:edSignature="gUNaA1VMrKRVeCRtgCI3rgTHw3ZPy6Kmf1ylTRMBBiiN8umaeflh93KCJhas1K17rpVKihTfsNpJLG9LoynuDg==" />
         </item>
         <item>
             <title>0.1.16</title>
