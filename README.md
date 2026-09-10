@@ -12,7 +12,7 @@
 
 ## 安装
 
-1. 从 [Releases](../../releases/latest) 下载 `Ledge-<版本>.dmg`;
+1. 从 [Releases](../../releases) 里带 `Ledge-<版本>.dmg` 的那一版下载;
 2. 打开 DMG,把 `Ledge.app` 拖进「应用程序」;
 3. 双击打开会被 Gatekeeper 拦下——这个包没有 Apple Developer ID 签名
    (那需要付费开发者账号)。到「**系统设置 → 隐私与安全性**」,拉到底部
