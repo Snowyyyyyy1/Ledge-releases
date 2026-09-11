@@ -10,8 +10,8 @@
       <sparkle:os>windows-x64</sparkle:os>
       <sparkle:minimumSystemVersion>10.0</sparkle:minimumSystemVersion>
       <sparkle:installerArguments>/S</sparkle:installerArguments>
-      <pubDate>Thu, 10 Sep 2026 13:24:46 GMT</pubDate>
-      <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.18/LedgeSetup-0.1.18-x64.exe" sparkle:edSignature="iLe9pSfISV2X4tkE1wjTkQAOxuwynYUsyjVl/6cQIQ7/nZpe2yUUaGFyENNykXQXLjJRJSki2lCiEomj7GCTCA==" length="69337240" type="application/octet-stream" />
+      <pubDate>Fri, 11 Sep 2026 09:18:46 GMT</pubDate>
+      <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.18/LedgeSetup-0.1.18-x64.exe" sparkle:edSignature="ybF48UKKqDDV1X6LQEl9wgfvWoY1nfZ6I7PrpDmL2prdZi0dBKQlPbS34x2lIZboBo5IRfLUb9XIhg1Cp0FvBA==" length="69609304" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
