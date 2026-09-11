@@ -3,6 +3,60 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.18</title>
+            <pubDate>Fri, 11 Sep 2026 16:59:13 +0800</pubDate>
+            <sparkle:version>33</sparkle:version>
+            <sparkle:shortVersionString>0.1.18</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版先暂停当前 macOS 代理动画实验，发布一套更保守的窗口动画与焦点交接实现：只有在目标窗口的隐藏能力被验证后才使用代理路径，否则立即回退到系统辅助功能动画，避免“看起来动了、真实窗口没有跟上”。
+
+## macOS 窗口动画与焦点
+
+- 增加能力门控的代理动画路径：目标窗口 alpha 隐藏验证通过时才进入代理动画，验证失败则回退到经典 AX / 目标窗口自有插值。
+- 保留真实目标窗口作为最终状态源，收纳、展开和焦点交接不再依赖静态遮挡层作为最终结果。
+- 增加 Enhanced UI 读取、帧运动分类和代理帧健康度诊断，便于后续区分“窗口确实移动”和“仅有视觉覆盖”。
+- 收紧外部应用切换期间的延迟交接，避免旧交接覆盖新的用户意图。
+
+## 其他
+
+- 更新 macOS 应用图标与菜单资源，补齐高分辨率资源。
+- 当前代理动画实验已暂停；本版不宣称未经完整录屏与逐帧像素验证的“60fps”或“完全不卡顿”。
+
+## 验证
+
+- macOS Swift 单元测试：356 项通过。
+- Swift 源码语法检查、Python 工具语法检查及 Proxy Handoff 实验测试通过。
+
+Windows 当前工作区改动未纳入本次 macOS 版本发布，后续继续单独验证。
+
+## 安装
+
+下载 `Ledge-0.1.18.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.18.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.18/Ledge-0.1.18.dmg" length="4743161" type="application/octet-stream" sparkle:edSignature="sb4IuZsKUZlPhpYrWimkhCCn26OoXAwccskGEyUxz/3HjVowNdY+QOhl6ThIeABbzYrBJKKQijLp2m3/qTqVDQ==" />
+        </item>
+        <item>
             <title>0.1.17</title>
             <pubDate>Thu, 10 Sep 2026 15:45:23 +0800</pubDate>
             <sparkle:version>32</sparkle:version>
