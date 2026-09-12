@@ -3,6 +3,62 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.19</title>
+            <pubDate>Sat, 12 Sep 2026 18:51:59 +0800</pubDate>
+            <sparkle:version>34</sparkle:version>
+            <sparkle:shortVersionString>0.1.19</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">这一版同时推进 macOS 与 Windows 的休眠恢复、窗口接管和发布可靠性，macOS 与 Windows 使用同一个 `v0.1.19` 标签发布。
+
+## macOS：休眠恢复与实例接管
+
+- 非主实例在锁被占用时不再永久退出，而是使用有界退避自动重试；主实例退出、休眠恢复或锁目录短暂不可用后，候选实例可以重新接管。
+- 收紧启动、睡眠、唤醒和关闭之间的生命周期轮次，旧的审计/焦点回调不能清空新一轮的接管状态。
+- WindowServer 枚举不可用或结果异常时保留已有会话，不把暂时不可观测误判为窗口已经消失。
+- 崩溃报告待发送数据改为结构化、可取消且幂等的载荷，避免把原始诊断文本或日志尾部意外写入待上传队列。
+- 加固发布脚本、版本/资产校验和 Sparkle appcast 生成路径。
+
+## Windows：恢复、最大化与维护安全
+
+- 收紧 Native 窗口前台交接、最大化/全屏状态分类、显示器归属和几何事务，减少目标窗口在系统状态变化后失去接管的情况。
+- 增加维护/恢复策略、rescue 记录持久化和安装器升级安全检查；升级过程中不强制结束仍可能在执行恢复的旧 resident。
+- 补充边缘指示条、图钉、前台解析、几何重排、维护恢复和性能基线测试。
+- 公开发布范围为 Windows x64；ARM64 继续作为本地/VM 构建目标。
+
+## 验证边界
+
+- 本地 macOS Debug 构建与全量 Swift 测试通过（368 项）；headless 生命周期、焦点、睡眠/唤醒和窗口存在性测试通过。
+- Windows Core/Native 的自动化检查随 Windows Release workflow 在 Windows 2022 runner 上执行。
+- `Windows/docs/windows-port.md` 的 W-01..W-10 仍是人工交互验收矩阵；本版本不把构建、单测或脚本化观察冒充为全部真实 GUI 通过。
+
+## 安装
+
+下载 `Ledge-0.1.19.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.19.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.19/Ledge-0.1.19.dmg" length="4780136" type="application/octet-stream" sparkle:edSignature="5dJ3tkClCVp+iOnuKi0JA4KAxvyOhy3Lc8ogHNpAcnoU9wmKIjXGfGROXnnKQvKMJraO31Mdxae+dNP2YkNJBQ==" />
+        </item>
+        <item>
             <title>0.1.18</title>
             <pubDate>Fri, 11 Sep 2026 16:59:13 +0800</pubDate>
             <sparkle:version>33</sparkle:version>
@@ -109,55 +165,6 @@ shasum -a 256 -c Ledge-0.1.17.dmg.sha256
 更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
 </description>
             <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.17/Ledge-0.1.17.dmg" length="3169881" type="application/octet-stream" sparkle:edSignature="tHGUmoXgjmDvEB7xi0ZqHBp3pm4wIZZlU2qKbfkjuA2phwKpWxT3YA3d7GnXT87LixjMmhQ8IAWGc3Nl8YmrCg==" />
-        </item>
-        <item>
-            <title>0.1.16</title>
-            <pubDate>Thu, 10 Sep 2026 12:41:44 +0800</pubDate>
-            <sparkle:version>24</sparkle:version>
-            <sparkle:shortVersionString>0.1.16</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown">这一版继续收紧 macOS 窗口展开/收起时的焦点交接，重点解决用户在动画稳定期间切换应用时出现的“卡住”或键盘落到错误窗口的问题。
-
-## 焦点交接
-
-- 展开时仅在用户意图仍指向目标 App 的情况下写入焦点，避免覆盖用户已经切换到的其他应用。
-- 收纳后的延迟焦点交还改为带快照和激活纪元的事务；用户在等待期间切换应用时，旧交接会自动失效。
-- 焦点写入后增加目标窗口语义回读，确认 App 实际获得的是预期窗口，而不是仅依赖写入调用返回成功。
-
-## 诊断与测试
-
-- 增加焦点意图、延迟交接失效和目标窗口验证的单元测试。
-- Debug 构建通过，Ledge 单元测试全部通过（340 项）。
-- 真实 macOS Debug GUI 回归已验证：外部切换会取消旧焦点交接，正常展开和收纳后的焦点交还仍然有效。
-
-本版本不把辅助功能日志或窗口几何数据等同于像素级流畅度验收；真实窗口的视觉帧率仍需按设备和目标 App 单独观察。
-
-## 安装
-
-下载 `Ledge-0.1.16.dmg`,双击打开,把 Ledge 拖到「应用程序」。
-
-首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
-到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
-「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
-(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
-
-首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
-不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
-
-需要 macOS 15 或更新版本。
-
-装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
-更新频率在设置里改。
-
-## 校验
-
-```
-shasum -a 256 -c Ledge-0.1.16.dmg.sha256
-```
-
-更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
-</description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.16/Ledge-0.1.16.dmg" length="3169875" type="application/octet-stream" sparkle:edSignature="p6ZvOn0CEfKKswFhHHfhsfliLSrbGmBT58M5lXjucWG19jktodlagjJ6/KezUeO1L0sq7GgS0pxOV9WkKTc6CA==" />
         </item>
     </channel>
 </rss>
