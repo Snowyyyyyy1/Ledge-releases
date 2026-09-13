@@ -3,6 +3,57 @@
     <channel>
         <title>Ledge</title>
         <item>
+            <title>0.1.20</title>
+            <pubDate>Sun, 13 Sep 2026 20:55:21 +0800</pubDate>
+            <sparkle:version>37</sparkle:version>
+            <sparkle:shortVersionString>0.1.20</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown">## macOS
+
+- 改进应用更新前后的窗口状态交接，恢复收纳位置、展开状态及固定状态。
+- 加强异步恢复的代次校验，避免过期恢复任务覆盖新的窗口操作。
+
+## Windows
+
+- 改为单进程架构：`Ledge.exe` 同时承载托盘、窗口管理和设置界面，减少常驻进程。原 `LedgeNative.exe` 仅用于安装和升级维护。
+- 更新安装器、快捷方式与签名校验，支持从旧双进程版本迁移。
+- 改进更新前后的窗口布局交接，以及单进程任务栏初始化。
+- 接入 x64 任务栏语义适配器，对已接管窗口使用显式展开／收回，而不是原生最小化；不是针对某个应用的专用逻辑。
+
+- 若旧任务栏适配器仍被 Explorer 占用，安装器会在修改文件前停止；请保存工作，注销或重启后、启动 Ledge 前重试。安装器不会自动重启系统。
+
+### 验证范围
+
+Windows 正式安装包为 x64，包含 x64 任务栏适配器。适配器仅在已核验的 Taskbar.dll 构建上启用（x64 文件版本 10.0.26100.9444）；其他系统构建不尝试不安全挂钩。合并任务栏组无法确定具体窗口时保留 Windows 原生行为。ARM64 源码路径同时保留。x64 编译、真实 Detours 自有进程夹具、Microsoft 二进制离线校验均不代表原生 x64 Explorer 物理点击已验收。应用更新、焦点与多窗口交互仍需对应系统验证。
+
+## 安装
+
+下载 `Ledge-0.1.20.dmg`,双击打开,把 Ledge 拖到「应用程序」。
+
+首次双击会被 Gatekeeper 拦下(这个包没有 Apple Developer ID 签名,需付费会员)。
+到「**系统设置 → 隐私与安全性**」底部「安全性」一栏,点"已阻止 Ledge"旁的
+「**仍要打开**」,确认并验证密码即可;只需这一次,以后正常双击。
+(macOS 15 起系统已移除"右键 →打开"的老办法,菜单里没有那一项。)
+
+首次启动会请求**辅助功能**权限 —— 移动别的 App 的窗口必须要它。授权后自动就绪,
+不需要重启;**这项授权在之后的版本更新中保持有效**,不用每次重新授权。
+
+需要 macOS 15 或更新版本。
+
+装到「应用程序」之后,以后的版本会**在应用内自动下载并安装**,不用再走这一遍。
+更新频率在设置里改。
+
+## 校验
+
+```
+shasum -a 256 -c Ledge-0.1.20.dmg.sha256
+```
+
+更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
+</description>
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.20/Ledge-0.1.20.dmg" length="4874378" type="application/octet-stream" sparkle:edSignature="pwOx0/ojhNRH5q025bedJBImx/5CjvEM4DxlQzo4ZRdepnLXZjbSTLIluD5g2m6ytkG4qQl8wsV9XkvGfesQDQ==" />
+        </item>
+        <item>
             <title>0.1.19</title>
             <pubDate>Sat, 12 Sep 2026 19:10:37 +0800</pubDate>
             <sparkle:version>36</sparkle:version>
