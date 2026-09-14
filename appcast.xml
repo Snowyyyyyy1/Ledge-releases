@@ -4,8 +4,8 @@
         <title>Ledge</title>
         <item>
             <title>0.1.22</title>
-            <pubDate>Mon, 14 Sep 2026 19:37:36 +0800</pubDate>
-            <sparkle:version>43</sparkle:version>
+            <pubDate>Mon, 14 Sep 2026 19:46:42 +0800</pubDate>
+            <sparkle:version>44</sparkle:version>
             <sparkle:shortVersionString>0.1.22</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown">## macOS
@@ -51,7 +51,7 @@ shasum -a 256 -c Ledge-0.1.22.dmg.sha256
 
 更多说明(权限一览、隐私、卸载、窗口找回):见[仓库首页](../../../)。
 </description>
-            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.22/Ledge-0.1.22.dmg" length="4911525" type="application/octet-stream" sparkle:edSignature="PRq0FlBAl8uNv7bN0p9pLNkbtej+rUtwcSV5t5Vcey3bgthhYenC15yQvsTgh6bK9oVHrQut6NVlODSLhPBmDw==" />
+            <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.22/Ledge-0.1.22.dmg" length="4911630" type="application/octet-stream" sparkle:edSignature="VAzxp2E45JVsNEsh1msI0rLoncPBIkjBKXnzHRHl18ve0Q6tdr/7snpMgXVS0opzCDGWrhxogjDO4Yf9ycoUDw==" />
         </item>
         <item>
             <title>0.1.21</title>
