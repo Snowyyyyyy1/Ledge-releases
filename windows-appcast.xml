@@ -5,13 +5,13 @@
     <description>Ledge releases</description>
     <language>en</language>
     <item>
-      <title>Version 0.1.26</title>
-      <sparkle:version>0.1.26</sparkle:version>
+      <title>Version 0.1.27</title>
+      <sparkle:version>0.1.27</sparkle:version>
       <sparkle:os>windows-x64</sparkle:os>
       <sparkle:minimumSystemVersion>10.0</sparkle:minimumSystemVersion>
       <sparkle:installerArguments>/S</sparkle:installerArguments>
-      <pubDate>Tue, 15 Sep 2026 12:25:02 GMT</pubDate>
-      <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.26/LedgeSetup-0.1.26-x64.exe" sparkle:edSignature="rJizYWLfY3SnCMG4LgmvuNL/JpjRWCR8+2WxpRvROygIxnlGJ/tmAogQcUgTU16+sh1FKuiha79donZ+8mZ1Bw==" length="71077896" type="application/octet-stream" />
+      <pubDate>Tue, 15 Sep 2026 13:39:30 GMT</pubDate>
+      <enclosure url="https://github.com/Snowyyyyyy1/Ledge-releases/releases/download/v0.1.27/LedgeSetup-0.1.27-x64.exe" sparkle:edSignature="k832GzBUmdQpqM2FwPfMdhFx8n2vu8HmAqTtu8meOVf0DWBuMgGJ5i1srjOhL3AEVViWp21bydqMv2LkZXJ5CA==" length="71083352" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
